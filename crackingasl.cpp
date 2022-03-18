@@ -11,7 +11,7 @@ CrackingASL::CrackingASL(QWidget *parent)
     db = QSqlDatabase::addDatabase("QSQLITE");
     QDir dir(QDir::currentPath());
     dir.cdUp();
-    dir.cd("CrackingASL/db");
+    dir.cd("Software-Engineering-Project/db");
     qDebug() <<  dir.path()+"/data.db"; //make sure this path is correct for testing
     db.setDatabaseName(dir.path()+"/data.db");
     if(!db.open()){
