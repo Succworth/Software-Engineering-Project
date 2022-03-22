@@ -19,11 +19,13 @@ public:
 
 private slots:
     void on_pushButton_clicked();
+    void on_lineEdit_2_returnPressed();
 
 private:
     Ui::CrackingASL *ui;
     QSqlDatabase db;
     MainMenu *mainMenu;
+    void login();
 
 };
 #endif // CRACKINGASL_H

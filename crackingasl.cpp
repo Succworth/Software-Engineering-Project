@@ -5,6 +5,7 @@ CrackingASL::CrackingASL(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CrackingASL)
 {
+
     ui->setupUi(this);
 
     //start of db connection code
@@ -29,8 +30,7 @@ CrackingASL::~CrackingASL()
 }
 
 
-void CrackingASL::on_pushButton_clicked()
-{
+void CrackingASL::login(){
     QString id = ui->lineEdit_2->text();
     QString name = ui->lineEdit->text();
     QSqlQuery query("SELECT * FROM CRACKINGASL WHERE STUDENT_ID ='"+id+"' AND STUDENT_NAME ='"+name+"'");
@@ -44,6 +44,17 @@ void CrackingASL::on_pushButton_clicked()
     }else{
         ui->label_3->setText("Incorrect Login Information");
     }
+}
 
+void CrackingASL::on_pushButton_clicked()
+{
+   login();
+
+}
+
+//Allows user to click enter after id to login
+void CrackingASL::on_lineEdit_2_returnPressed()
+{
+    login();
 }
 
