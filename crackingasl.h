@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QtSql>
+#include "mainmenu.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CrackingASL; }
@@ -22,6 +23,7 @@ private slots:
 private:
     Ui::CrackingASL *ui;
     QSqlDatabase db;
+    MainMenu *mainMenu;
 
 };
 #endif // CRACKINGASL_H
