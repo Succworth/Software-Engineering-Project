@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    crackingasl.cpp
+    crackingasl.cpp \
+    mainmenu.cpp
 
 HEADERS += \
-    crackingasl.h
+    crackingasl.h \
+    mainmenu.h
 
 FORMS += \
-    crackingasl.ui
+    crackingasl.ui \
+    mainmenu.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
