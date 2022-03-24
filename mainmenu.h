@@ -15,9 +15,11 @@ public:
     explicit MainMenu(QWidget *parent = nullptr);
     ~MainMenu();
     void setUserText(QString name, QString id);
+    void init_menu();
 
 private:
     Ui::MainMenu *ui;
+
 };
 
 #endif // MAINMENU_H
