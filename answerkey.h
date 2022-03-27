@@ -12,7 +12,7 @@ using namespace std;
 
 class AnswerKey {
 private:
-    string path = "Common Words and Phrases ";
+    string path = "Assets/Common Words and Phrases ";
     vector<string> answers;
     int numWords;
 public:
