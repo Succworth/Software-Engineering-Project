@@ -27,7 +27,7 @@ void MainMenu::init_menu(){
     //set up Lessons
     QVBoxLayout* lesson_layout = new QVBoxLayout(ui->frame_2);
 
-    for(unsigned int i = 0; i < numLessons; i++){
+    for(unsigned int i = 1; i < numLessons+1; i++){
 
         QHBoxLayout* row = new QHBoxLayout();
 
@@ -42,7 +42,7 @@ void MainMenu::init_menu(){
     //set up Benchmarks
     QVBoxLayout* benchmark_layout = new QVBoxLayout(ui->frame_3);
 
-    for(unsigned int i = 0; i < numLessons; i++){
+    for(unsigned int i = 1; i < numLessons+1; i++){
 
         QHBoxLayout* row = new QHBoxLayout();
 
