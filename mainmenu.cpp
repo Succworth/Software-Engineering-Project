@@ -1,5 +1,7 @@
 #include "mainmenu.h"
 #include "ui_mainmenu.h"
+//temp include
+#include "answerkey.h"
 
 MainMenu::MainMenu(QWidget *parent) :
     QMainWindow(parent),
@@ -9,6 +11,8 @@ MainMenu::MainMenu(QWidget *parent) :
 
     init_menu();
 
+    //temp code below
+    AnswerKey(2);
 }
 
 MainMenu::~MainMenu()

@@ -1,24 +1,20 @@
 #ifndef ANSWERKEY_H
 #define ANSWERKEY_H
 
-#include <unordered_map>
-#include<string>
-#include <fstream>
-#include <iostream>
-#include <filesystem>
-#include <vector>
 #include <random>
-using namespace std;
+#include <QDirIterator>
+#include <QDebug>
+#include <QVector>
+#include <QResource>
 
 class AnswerKey {
 private:
-    string path = "Assets/Common Words and Phrases ";
-    vector<string> answers;
+    QVector<QString> answers;
     int numWords;
 public:
     AnswerKey(int i);
-    vector<string> getAnswers();
-    string getRandom(string answer);
+    QVector<QString> getAnswers();
+    QString getRandom(QString answer);
 };
 
 #endif // ANSWERKEY_H

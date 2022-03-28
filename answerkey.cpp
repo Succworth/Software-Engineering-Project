@@ -1,21 +1,29 @@
 #include "answerkey.h"
+
 AnswerKey::AnswerKey(int i) {
+    QDir dir(QDir::currentPath());
+    dir.cdUp();
+    dir.cd("Software-Engineering-Project/");
+    qDebug() <<  dir.path()+"/Assets.rcc"; //make sure this path is correct for testing
+    QResource::registerResource(dir.path()+"/Assets.rcc");
     numWords = 0;
-    path += to_string(i);
-    for (auto& dirEntry : filesystem::recursive_directory_iterator(path)) {
-        filesystem::path p = dirEntry;
-        p.replace_extension("");
-        answers.push_back(p.filename().string());
+    //example of how directories look now: ":/Assets/Common Words and Phrases 1/again.mp4"
+    QString path = ":/Assets/Common Words and Phrases "+QString::number(i)+"/";
+    QDirIterator it(path, QDirIterator::Subdirectories);
+    while (it.hasNext()) {
+        QFileInfo fi(it.next());
+        answers.append(fi.baseName());
+        qDebug() << fi.baseName();
         numWords++;
     }
 }
 
-vector<string> AnswerKey::getAnswers() {
+QVector<QString> AnswerKey::getAnswers() {
     return answers;
 }
 
-string AnswerKey::getRandom(string answer) {
-    string random = answers[rand() % numWords];
+QString AnswerKey::getRandom(QString answer) {
+    QString random = answers[rand() % numWords];
     if (random.compare(answer) == 0) {
         getRandom(answer);
     }
