@@ -28,4 +28,19 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-RESOURCES += \
+
+#configuration to copy db and assets to build dir
+CONFIG(debug, debug|release) {
+    VARIANT = debug
+} else {
+    VARIANT = release
+}
+CONFIG += file_copies
+#names for file copys
+COPIES += db assets
+#files to copy
+db.files += $$files(db/data.db)
+assets.files += $$files(Assets.rcc)
+#destination paths
+db.path = $$OUT_PWD/$$VARIANT/db
+assets.path = $$OUT_PWD/$$VARIANT/

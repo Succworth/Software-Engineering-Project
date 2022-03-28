@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QVector>
 #include <QResource>
+#include <QCoreApplication>
 
 class AnswerKey {
 private:

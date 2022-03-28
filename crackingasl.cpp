@@ -10,11 +10,9 @@ CrackingASL::CrackingASL(QWidget *parent)
 
     //start of db connection code
     db = QSqlDatabase::addDatabase("QSQLITE");
-    QDir dir(QDir::currentPath());
-    dir.cdUp();
-    dir.cd("Software-Engineering-Project/db");
-    qDebug() <<  dir.path()+"/data.db"; //make sure this path is correct for testing
-    db.setDatabaseName(dir.path()+"/data.db");
+    QDir exeDir(QCoreApplication::applicationDirPath());
+    qDebug() <<  exeDir.path()+"/db/data.db";
+    db.setDatabaseName(exeDir.path()+"/db/data.db");
     if(!db.open()){
         //throw error or warning or debug message
          qWarning() << "db connection error:" << db.lastError();
