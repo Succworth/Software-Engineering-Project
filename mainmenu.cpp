@@ -12,7 +12,14 @@ MainMenu::MainMenu(QWidget *parent) :
     init_menu();
 
     //temp code below
-    AnswerKey(2);
+    /*
+    AnswerKey a = AnswerKey(2);
+    QString question = a.getQuestion();
+    QVector<QString> test = a.getChoices(question, 3);
+    for (auto s : test) {
+        qDebug() << s;
+    }
+    */
 }
 
 MainMenu::~MainMenu()

@@ -15,7 +15,8 @@ private:
 public:
     AnswerKey(int i);
     QVector<QString> getAnswers();
-    QString getRandom(QString answer);
+    QVector<QString> getChoices(QString answer, int n);
+    QString getQuestion();
 };
 
 #endif // ANSWERKEY_H

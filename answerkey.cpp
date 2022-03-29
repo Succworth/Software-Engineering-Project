@@ -20,10 +20,22 @@ QVector<QString> AnswerKey::getAnswers() {
     return answers;
 }
 
-QString AnswerKey::getRandom(QString answer) {
-    QString random = answers[rand() % numWords];
-    if (random.compare(answer) == 0) {
-        getRandom(answer);
+QVector<QString> AnswerKey::getChoices(QString answer, int n) {
+    QVector<QString> choices;
+    choices.push_back(answer);
+    while(n > 0) {
+        QString random = answers[rand() % numWords];
+        if(choices.contains(random)) {
+            continue;
+        }
+        else {
+            choices.push_back(random);
+            n--;
+        }
     }
-    return random;
+    return choices;
+}
+
+QString AnswerKey::getQuestion() {
+    return answers[rand() % numWords];
 }
