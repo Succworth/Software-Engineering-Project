@@ -86,7 +86,7 @@ jobs:
           ls
           ISCC.exe /O"${{ github.workspace }}\Cracking ASL Installer" "${{ github.workspace }}\installerscript.iss"
         
-      #- uses: actions/upload-artifact@v1
-        #with:
-          #name: Cracking ASL Installer
-          #path: ${{ github.workspace }}\Cracking ASL Installer
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Cracking ASL Installer
+          path: ${{ github.workspace }}\Cracking ASL Installer
