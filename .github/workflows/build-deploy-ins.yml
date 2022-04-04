@@ -5,13 +5,13 @@ name: Build & Deploy Installer
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch (ignores .md files and assets folder)
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    paths-ignore:
-      - '**.md'
-      - 'Assets/**'
+  #push:
+    #branches: [ main ]
+  #pull_request:
+    #branches: [ main ]
+    #paths-ignore:
+      #- '**.md'
+      #- 'Assets/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
