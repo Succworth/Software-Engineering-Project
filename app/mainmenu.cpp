@@ -13,9 +13,9 @@ MainMenu::MainMenu(QWidget *parent) :
 
     //temp code below
     /*
-    AnswerKey a = AnswerKey(3);
-    //QString question = a.getQuestion();
-    QVector<QString> test = a.getQuestions();
+    AnswerKey a = AnswerKey(2);
+    QString question = a.getQuestion();
+    QVector<QString> test = a.getChoices(question, 3);
     for (auto s : test) {
         qDebug() << s;
     }
