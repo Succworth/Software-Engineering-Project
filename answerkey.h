@@ -17,6 +17,7 @@ public:
     QVector<QString> getAnswers();
     QVector<QString> getChoices(QString answer, int n);
     QString getQuestion();
+    QVector<QString> getQuestions();
 };
 
 #endif // ANSWERKEY_H

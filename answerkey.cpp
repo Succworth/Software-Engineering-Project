@@ -39,3 +39,13 @@ QVector<QString> AnswerKey::getChoices(QString answer, int n) {
 QString AnswerKey::getQuestion() {
     return answers[rand() % numWords];
 }
+
+QVector<QString> AnswerKey::getQuestions() {
+    QVector<QString> random;
+    QVector<QString> temp = answers;
+    while(temp.size() != 0) {
+        int i = rand() % temp.size();
+        random.push_back(temp.takeAt(i));
+    }
+    return random;
+}
