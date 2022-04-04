@@ -1,12 +1,17 @@
+# This is workflow will build CrackingASL and upload an Installer as a artifact
+
 name: Build & Deploy Installer
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # Triggers the workflow on push or pull request events but only for the main branch (ignores .md files and assets folder)
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - 'Assets/**'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -23,10 +28,17 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      #install qt
+      - name: Cache Qt
+        id: cache-qt
+        uses: actions/cache@v1  # not v2!
+        with:
+          path: ../Qt
+          key: ${{ runner.os }}-QtCache
+          
       - name: Install Qt
         uses: jurplel/install-qt-action@v2.14.0
         with:
+          cached: ${{ steps.cache-qt.outputs.cache-hit }}
           # Version of Qt to install
           version: '5.15.2'
           # Host platform
@@ -40,37 +52,41 @@ jobs:
           # Qt tools to download--specify comma-separated argument lists which are themselves separated by spaces: <tool_name>,<tool_version>,<tool_arch>
           tools: 'tools_mingw,8.1.0-1-202004170606,qt.tools.win64_mingw810'
       
-      # qmake build
-      - name: Build
+      - name: Build CrackingASL.pro
         run: qmake.exe CrackingASL.pro
         
-      # make
-      - name: Make
+      - name: Compile CrackingASL
         run: mingw32-make.exe
         
-      # add mingw dlls to path  
-      - name: Setting up environment for Qt usage...
+      - name: Setting up environment path for Qt usage...
         run: echo "${{ runner.workspace }}\Qt\Tools\mingw810_64\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
         
-      - name: Deploy windows 
+      - name: Deploy CrackingASL for windows 
         shell: cmd
         run: |
           cd ${{ runner.workspace }}\Qt\5.15.2\mingw81_64
           windeployqt.exe ${{ github.workspace }}\release\CrackingASL.exe
           
-      - name: Download InnoSetup 
-        run: curl -L -o installer.exe http://files.jrsoftware.org/is/6/innosetup-6.2.0.exe
-          
-      - name: Install InnoSetup
-        run: ./installer.exe /verysilent /allusers /dir=release
+      - name: Cache InnoSetup
+        id: cache-innosetup
+        uses: actions/cache@v1
+        with:
+          path: release
+          key: ${{ runner.os }}-innosetup
+
+      - name: Download and install InnoSetup
+        if: steps.cache-innosetup.outputs.cache-hit != 'true'
+        run: |
+          curl -L -o installer.exe http://files.jrsoftware.org/is/6/innosetup-6.2.0.exe
+          ./installer.exe /verysilent /allusers /dir=release         
         
       - name: Create Installer 
         run: |
           cd ./release
           ls
-          ISCC.exe "${{ github.workspace }}\installerscript.iss"
+          ISCC.exe /O"${{ github.workspace }}\Cracking ASL Installer" "${{ github.workspace }}\installerscript.iss"
         
-      - uses: actions/upload-artifact@v1
-        with:
-          name: Cracking ASL Installer
-          path: ${{ github.workspace }}\release\Cracking ASL Installer
+      #- uses: actions/upload-artifact@v1
+        #with:
+          #name: Cracking ASL Installer
+          #path: ${{ github.workspace }}\Cracking ASL Installer
