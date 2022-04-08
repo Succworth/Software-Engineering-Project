@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     answerkey.cpp \
+    gamewindow.cpp \
     main.cpp \
     crackingasl.cpp \
     mainmenu.cpp
@@ -17,10 +18,12 @@ SOURCES += \
 HEADERS += \
     answerkey.h \
     crackingasl.h \
+    gamewindow.h \
     mainmenu.h
 
 FORMS += \
     crackingasl.ui \
+    gamewindow.ui \
     mainmenu.ui
 
 # Default rules for deployment.
