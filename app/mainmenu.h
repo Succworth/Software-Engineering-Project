@@ -2,7 +2,7 @@
 #define MAINMENU_H
 
 #include <QMainWindow>
-
+#include "gamewindow.h"
 namespace Ui {
 class MainMenu;
 }
@@ -16,10 +16,11 @@ public:
     ~MainMenu();
     void setUserText(QString name, QString id);
     void init_menu();
-
+    void open_lesson();
+    void open_benchmark();
 private:
     Ui::MainMenu *ui;
-
+    GameWindow* gameWindow;
 };
 
 #endif // MAINMENU_H

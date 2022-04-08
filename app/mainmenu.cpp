@@ -2,6 +2,7 @@
 #include "ui_mainmenu.h"
 //temp include
 #include "answerkey.h"
+#include "gamewindow.h"
 
 MainMenu::MainMenu(QWidget *parent) :
     QMainWindow(parent),
@@ -49,6 +50,9 @@ void MainMenu::init_menu(){
         row->addWidget(goToLesson);
 
         lesson_layout->addLayout(row);
+
+        QObject::connect(goToLesson, &QPushButton::clicked, this, &MainMenu::open_lesson);
+
     }
     //set up Benchmarks
     QVBoxLayout* benchmark_layout = new QVBoxLayout(ui->frame_3);
@@ -65,5 +69,15 @@ void MainMenu::init_menu(){
 
         benchmark_layout->addLayout(row);
     }
+
+}
+
+void MainMenu::open_lesson(){
+    hide();
+    gameWindow = new GameWindow(this);
+    gameWindow->show();
+}
+
+void MainMenu::open_benchmark(){
 
 }
