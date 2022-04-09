@@ -33,8 +33,8 @@ void MainMenu::setUserText(QString name, QString id){
 }
 
 void MainMenu::init_menu(){
-    unsigned int numLessons = 20;
-    unsigned int numBenchmarks = 20;
+    unsigned int numLessons = 30;
+    unsigned int numBenchmarks = 30;
 
     //set up Lessons
     QVBoxLayout* lesson_layout = new QVBoxLayout(ui->frame_2);
