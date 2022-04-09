@@ -13,13 +13,15 @@ SOURCES += \
     gamewindow.cpp \
     main.cpp \
     crackingasl.cpp \
-    mainmenu.cpp
+    mainmenu.cpp \
+    user.cpp
 
 HEADERS += \
     answerkey.h \
     crackingasl.h \
     gamewindow.h \
-    mainmenu.h
+    mainmenu.h \
+    user.h
 
 FORMS += \
     crackingasl.ui \
