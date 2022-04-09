@@ -13,14 +13,14 @@ MainMenu::MainMenu(QWidget *parent) :
     init_menu();
 
     //temp code below
-    /*
+
     AnswerKey a = AnswerKey(2);
     QString question = a.getQuestion();
     QVector<QString> test = a.getChoices(question, 3);
     for (auto s : test) {
         qDebug() << s;
     }
-    */
+
 }
 
 MainMenu::~MainMenu()
@@ -38,7 +38,7 @@ void MainMenu::init_menu(){
 
     //set up Lessons
     QVBoxLayout* lesson_layout = new QVBoxLayout(ui->frame_2);
-
+    QPushButton **lessonArray = new QPushButton*[numLessons];
     for(unsigned int i = 1; i < numLessons+1; i++){
 
         QHBoxLayout* row = new QHBoxLayout();
@@ -51,7 +51,10 @@ void MainMenu::init_menu(){
 
         lesson_layout->addLayout(row);
 
-        QObject::connect(goToLesson, &QPushButton::clicked, this, &MainMenu::open_lesson);
+        lessonArray[i-1] = goToLesson;
+        QObject::connect(lessonArray[i-1], &QPushButton::clicked, this, [=] {
+                            open_lesson(i);
+                         });
 
     }
     //set up Benchmarks
@@ -72,9 +75,9 @@ void MainMenu::init_menu(){
 
 }
 
-void MainMenu::open_lesson(){
+void MainMenu::open_lesson(int i){
     hide();
-    gameWindow = new GameWindow(this);
+    gameWindow = new GameWindow(this, false, i);
     gameWindow->show();
 }
 

@@ -16,7 +16,7 @@ public:
     ~MainMenu();
     void setUserText(QString name, QString id);
     void init_menu();
-    void open_lesson();
+    void open_lesson(int i);
     void open_benchmark();
 private:
     Ui::MainMenu *ui;
