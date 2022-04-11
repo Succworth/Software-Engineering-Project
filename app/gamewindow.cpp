@@ -2,7 +2,7 @@
 #include "ui_gamewindow.h"
 #include "mainmenu.h"
 
-
+// We probably need to make a separate class for benchmark. Hard to pass in boolean value
 GameWindow::GameWindow(QWidget *parent, bool isBenchmark, int i) :
     QMainWindow(parent),
     ui(new Ui::GameWindow)
