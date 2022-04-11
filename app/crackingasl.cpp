@@ -31,14 +31,50 @@ CrackingASL::~CrackingASL()
 void CrackingASL::login(){
     QString id = ui->lineEdit_2->text();
     QString name = ui->lineEdit->text();
-    QSqlQuery query("SELECT * FROM CRACKINGASL WHERE STUDENT_ID ='"+id+"' AND STUDENT_NAME ='"+name+"'");
+    qDebug() << "Before checks";
+    /* Verifying input to prevent possible SQL injection attack
+     */
+    bool valid = true;
 
-    if(query.first()){
-        hide();
-        mainMenu = new MainMenu(this);
-        mainMenu->show();
-        mainMenu->setUserText(query.value(0).toString(), query.value(1).toString());
-        //ui->label_3->setText(query.value(1).toString());
+    for(unsigned int i = 0; i < id.size(); i++){
+        if(!(id[i].isDigit())){
+            valid = false;
+            break;
+        }
+    }
+
+    for(unsigned int i = 0; i < name.size(); i++){
+        if(!(name[i].isLetter())){
+            valid = false;
+            break;
+        }
+    }
+    qDebug() << "After checks";
+
+    if(valid){
+        qDebug() << "Valid test";
+    }
+
+    if(valid){
+        qDebug() << "Before query";
+
+        QSqlQuery query("SELECT * FROM CRACKINGASL WHERE STUDENT_ID ='"+id+"' AND STUDENT_NAME ='"+name+"'");
+
+        qDebug() << "Valid input";
+
+        if(query.first()){
+            hide();
+            qDebug() << "Valid input 1";
+            mainMenu = new MainMenu(this);
+            qDebug() << "Valid input 2";
+            mainMenu->show();
+            qDebug() << "Valid input 3";
+            mainMenu->setUserText(query.value(0).toString(), query.value(1).toString());
+            qDebug() << "Valid input 4";
+            //ui->label_3->setText(query.value(1).toString());
+        }else{
+            ui->label_3->setText("Incorrect Login Information");
+        }
     }else{
         ui->label_3->setText("Incorrect Login Information");
     }
