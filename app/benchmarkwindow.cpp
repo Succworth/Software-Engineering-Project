@@ -1,37 +1,46 @@
-#include "gamewindow.h"
-#include "ui_gamewindow.h"
+#include "benchmarkwindow.h"
+#include "ui_benchmarkwindow.h"
 #include "mainmenu.h"
 
-GameWindow::GameWindow(QWidget *parent, int i) :
+/* TO DO
+ * Make it so that users can only guess one time
+ * Randomize the questions
+ * Only display a certain number of questions
+ * Display user's score once they've gone through every question
+*/
+
+BenchmarkWindow::BenchmarkWindow(QWidget *parent, int i) :
     QMainWindow(parent),
-    ui(new Ui::GameWindow)
+    ui(new Ui::BenchmarkWindow)
 {
     ui->setupUi(this);
     lessonNumber = i;
 
     a = new AnswerKey(i);
+    questionNo = 0;
+    questionSet = a->getAnswers();
     displayQuestion();
 
 
-    QObject::connect(ui->pushButton, &QPushButton::clicked, this, &GameWindow::open_mainmenu);
+    QObject::connect(ui->pushButton, &QPushButton::clicked, this, &BenchmarkWindow::open_mainmenu);
 }
 
-GameWindow::~GameWindow()
+BenchmarkWindow::~BenchmarkWindow()
 {
     delete ui;
 }
 
-void GameWindow::open_mainmenu(){
+void BenchmarkWindow::open_mainmenu(){
     hide();
     //do saving and destruction
     MainMenu* mainmenu = new MainMenu(this);
     mainmenu->show();
 }
 
-QVector<QString> GameWindow::randomize(QVector<QString> &choices) {
+QVector<QString> BenchmarkWindow::randomize(QVector<QString> &choices) {
     QVector<QString> temp;
     while (temp.size() < choices.size()) {
-        QString test = choices[rand() % 4];
+        QString test = choices[rand() % choices.size()];
         if (temp.contains(test)) {
             continue;
         }
@@ -44,10 +53,12 @@ QVector<QString> GameWindow::randomize(QVector<QString> &choices) {
 }
 
 //Displays gif + choices
-void GameWindow::displayQuestion() {
+void BenchmarkWindow::displayQuestion() {
     ui->Next->hide();
 
-    currQuestion = a->getQuestion();
+    currQuestion = questionSet[questionNo];
+    questionNo++;
+
     QVector<QString> choices = a->getChoices(currQuestion, 3);
     choices = randomize(choices);
 
@@ -68,7 +79,7 @@ void GameWindow::displayQuestion() {
 }
 
 //Reset button colors
-void GameWindow::resetButtons() {
+void BenchmarkWindow::resetButtons() {
     QPalette pal = ui->Choice_A->palette();
     pal.setColor(QPalette::Button, QColor(QColorConstants::White));
     ui->Choice_A->setAutoFillBackground(true);
@@ -95,14 +106,14 @@ void GameWindow::resetButtons() {
 }
 
 //Flow of questions
-void GameWindow::on_Next_clicked()
+void BenchmarkWindow::on_Next_clicked()
 {
     resetButtons();
     displayQuestion();
 }
 
 
-void GameWindow::on_Choice_A_clicked()
+void BenchmarkWindow::on_Choice_A_clicked()
 {
     resetButtons();
     QString text = ui->Choice_A->text();
@@ -124,7 +135,7 @@ void GameWindow::on_Choice_A_clicked()
 }
 
 
-void GameWindow::on_Choice_B_clicked()
+void BenchmarkWindow::on_Choice_B_clicked()
 {
     resetButtons();
     QString text = ui->Choice_B->text();
@@ -146,7 +157,7 @@ void GameWindow::on_Choice_B_clicked()
 }
 
 
-void GameWindow::on_Choice_C_clicked()
+void BenchmarkWindow::on_Choice_C_clicked()
 {
     resetButtons();
     QString text = ui->Choice_C->text();
@@ -168,7 +179,7 @@ void GameWindow::on_Choice_C_clicked()
 }
 
 
-void GameWindow::on_Choice_D_clicked()
+void BenchmarkWindow::on_Choice_D_clicked()
 {
     resetButtons();
     QString text = ui->Choice_D->text();
@@ -188,4 +199,3 @@ void GameWindow::on_Choice_D_clicked()
         ui->Choice_D->update();
     }
 }
-
