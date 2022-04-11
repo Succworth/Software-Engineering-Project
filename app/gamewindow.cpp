@@ -2,6 +2,8 @@
 #include "ui_gamewindow.h"
 #include "mainmenu.h"
 
+// Add alphabet
+
 GameWindow::GameWindow(QWidget *parent, int i) :
     QMainWindow(parent),
     ui(new Ui::GameWindow)

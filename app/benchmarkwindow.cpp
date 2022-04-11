@@ -7,6 +7,7 @@
  * Randomize the questions
  * Only display a certain number of questions
  * Display user's score once they've gone through every question
+ * Add alphabet
 */
 
 BenchmarkWindow::BenchmarkWindow(QWidget *parent, int i) :
