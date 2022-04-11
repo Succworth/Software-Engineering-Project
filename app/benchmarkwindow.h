@@ -1,25 +1,22 @@
-#ifndef GAMEWINDOW_H
-#define GAMEWINDOW_H
+#ifndef BENCHMARKWINDOW_H
+#define BENCHMARKWINDOW_H
 
 #include <QMainWindow>
 #include <QMovie>
 #include <random>
 #include "answerkey.h"
 
-class MainMenu;
-
 namespace Ui {
-class GameWindow;
+class BenchmarkWindow;
 }
 
-class GameWindow : public QMainWindow
+class BenchmarkWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit GameWindow(QWidget *parent = nullptr, int i = 1);
-    ~GameWindow();
-
+    explicit BenchmarkWindow(QWidget *parent = nullptr, int i = 1);
+    ~BenchmarkWindow();
 private slots:
     void on_Next_clicked();
 
@@ -32,9 +29,11 @@ private slots:
     void on_Choice_D_clicked();
 
 private:
-    Ui::GameWindow *ui;
+    Ui::BenchmarkWindow *ui;
     AnswerKey *a;
     QString currQuestion;
+    QVector<QString> questionSet;
+    int questionNo;
     int lessonNumber;
     void open_mainmenu();
     void displayQuestion();
@@ -42,4 +41,4 @@ private:
     QVector<QString> randomize(QVector<QString> &choices);
 };
 
-#endif // GAMEWINDOW_H
+#endif // BENCHMARKWINDOW_H

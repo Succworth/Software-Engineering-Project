@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "gamewindow.h"
+#include "benchmarkwindow.h"
+
 namespace Ui {
 class MainMenu;
 }
@@ -17,10 +19,11 @@ public:
     void setUserText(QString name, QString id);
     void init_menu();
     void open_lesson(int i);
-    void open_benchmark();
+    void open_benchmark(int i);
 private:
     Ui::MainMenu *ui;
     GameWindow* gameWindow;
+    BenchmarkWindow* benchmarkWindow;
 };
 
 #endif // MAINMENU_H

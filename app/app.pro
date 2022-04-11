@@ -12,6 +12,7 @@ RESOURCES = Assets.qrc
 
 SOURCES += \
     answerkey.cpp \
+    benchmarkwindow.cpp \
     gamewindow.cpp \
     main.cpp \
     crackingasl.cpp \
@@ -20,12 +21,14 @@ SOURCES += \
 
 HEADERS += \
     answerkey.h \
+    benchmarkwindow.h \
     crackingasl.h \
     gamewindow.h \
     mainmenu.h \
     user.h
 
 FORMS += \
+    benchmarkwindow.ui \
     crackingasl.ui \
     gamewindow.ui \
     mainmenu.ui
