@@ -1,6 +1,7 @@
 #include "crackingasl.h"
 #include "ui_crackingasl.h"
-
+#include <QVariant>
+#include <QSqlQuery>
 CrackingASL::CrackingASL(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::CrackingASL)
@@ -92,3 +93,62 @@ void CrackingASL::on_lineEdit_2_returnPressed()
     login();
 }
 
+void CrackingASL::on_pushButton_2_clicked()
+{
+    createAccount();
+}
+
+void CrackingASL::createAccount()
+{
+    QString id = ui->lineEdit_2->text();
+    QString name = ui->lineEdit->text();
+    qDebug() << "Before checks";
+    /* Verifying input to prevent possible SQL injection attack
+     */
+    bool valid = true;
+
+    for(unsigned int i = 0; i < id.size(); i++){
+        if(!(id[i].isDigit())){
+            valid = false;
+            break;
+        }
+    }
+
+    for(unsigned int i = 0; i < name.size(); i++){
+        if(!(name[i].isLetter())){
+            valid = false;
+            break;
+        }
+    }
+    qDebug() << "After checks";
+
+    if(valid){
+        qDebug() << "Valid test";
+    }
+
+    if(valid){
+        QSqlQuery query("SELECT * FROM CRACKINGASL WHERE STUDENT_ID ='"+id+"'");
+        if(query.first()){
+            ui->label_3->setText("User ID already exist");
+        }
+        else{
+        db.open();
+        QSqlQuery query1("INSERT INTO CRACKINGASL(STUDENT_ID,STUDENT_NAME) "
+                          "VALUES ('"+id+"', '"+name+"') ");
+       // query1.prepare("INSERT INTO CRACKINGASL(STUDENT_ID,STUDENT_NAME) "
+       //                "VALUES (?,?) ");
+       //               // "VALUES ('"+id+"', '"+name+"') ");
+       // query1.addBindValue(id);
+       // query1.addBindValue(name);
+        query1.exec();
+       // if(query1.exec()){
+        ui->label_3->setText("Account Created Successfully");
+       //     }
+       //     else{
+       //     ui->label_3->setText("failed");
+       //     db.close();
+       // }
+        }
+    }
+    //ui->label_3->setText("Creating button works");
+}
