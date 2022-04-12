@@ -36,20 +36,31 @@ void CrackingASL::login(){
     /* Verifying input to prevent possible SQL injection attack
      */
     bool valid = true;
-
+    if(id.size() == 8){
     for(unsigned int i = 0; i < id.size(); i++){
         if(!(id[i].isDigit())){
             valid = false;
             break;
+            }
         }
+    }else{
+        valid = false;
+        ui->label_3->setText("Invalid ID");
     }
 
+    if(name.size() >= 1){
     for(unsigned int i = 0; i < name.size(); i++){
         if(!(name[i].isLetter())){
             valid = false;
             break;
+            }
         }
     }
+    else{
+        valid = false;
+        ui->label_3->setText("Invalid Name");
+    }
+
     qDebug() << "After checks";
 
     if(valid){
@@ -107,18 +118,29 @@ void CrackingASL::createAccount()
      */
     bool valid = true;
 
+    if(id.size() == 8){
     for(unsigned int i = 0; i < id.size(); i++){
         if(!(id[i].isDigit())){
             valid = false;
             break;
+            }
         }
+    }else{
+        valid = false;
+        ui->label_3->setText("Invalid ID");
     }
 
+    if(name.size() >= 1){
     for(unsigned int i = 0; i < name.size(); i++){
         if(!(name[i].isLetter())){
             valid = false;
             break;
+            }
         }
+    }
+    else{
+        valid = false;
+        ui->label_3->setText("Invalid Name");
     }
     qDebug() << "After checks";
 
