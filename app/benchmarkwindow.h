@@ -28,6 +28,8 @@ private slots:
 
     void on_Choice_D_clicked();
 
+    void on_Retry_clicked();
+
 private:
     Ui::BenchmarkWindow *ui;
     AnswerKey *a;
@@ -35,6 +37,7 @@ private:
     QVector<QString> questionSet;
     int questionNo;
     int lessonNumber;
+    bool clicked = false;
     void open_mainmenu();
     void displayQuestion();
     void resetButtons();

@@ -3,7 +3,7 @@
 #include "mainmenu.h"
 
 /* TO DO
- * Make it so that users can only guess one time
+ * Make it so that users can only guess one time ： Complete
  * Randomize the questions
  * Only display a certain number of questions
  * Display user's score once they've gone through every question
@@ -16,10 +16,11 @@ BenchmarkWindow::BenchmarkWindow(QWidget *parent, int i) :
 {
     ui->setupUi(this);
     lessonNumber = i;
-
     a = new AnswerKey(i);
     questionNo = 0;
     questionSet = a->getAnswers();
+    ui->Correction->setText("Select an answer");
+    ui->Retry->hide();
     displayQuestion();
 
 
@@ -104,6 +105,11 @@ void BenchmarkWindow::resetButtons() {
     ui->Choice_D->setAutoFillBackground(true);
     ui->Choice_D->setPalette(pal);
     ui->Choice_D->update();
+
+    //Set a text box for direction and reset clicked.
+    ui->Correction->setText("Select an answer");
+    ui->Retry->hide();
+    clicked = false;
 }
 
 //Flow of questions
@@ -116,87 +122,116 @@ void BenchmarkWindow::on_Next_clicked()
 
 void BenchmarkWindow::on_Choice_A_clicked()
 {
-    resetButtons();
-    QString text = ui->Choice_A->text();
-    if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_A->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_A->setAutoFillBackground(true);
-       ui->Choice_A->setPalette(pal);
-       ui->Choice_A->update();
-       ui->Next->show();
-    }
-    else {
-        QPalette pal = ui->Choice_A->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_A->setAutoFillBackground(true);
-        ui->Choice_A->setPalette(pal);
-        ui->Choice_A->update();
+    if(!clicked){
+        resetButtons();
+        QString text = ui->Choice_A->text();
+        if (text.compare(currQuestion) == 0) {
+           QPalette pal = ui->Choice_A->palette();
+           pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
+           ui->Choice_A->setAutoFillBackground(true);
+           ui->Choice_A->setPalette(pal);
+           ui->Choice_A->update();
+           ui->Next->show();
+           ui->Correction->setText("Correct!");
+        }
+        else {
+            QPalette pal = ui->Choice_A->palette();
+            pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
+            ui->Choice_A->setAutoFillBackground(true);
+            ui->Choice_A->setPalette(pal);
+            ui->Choice_A->update();
+            ui->Correction->setText("Incorrect, Try again!");
+            ui->Retry->show();
+            }
+        clicked = true;
     }
 }
 
 
 void BenchmarkWindow::on_Choice_B_clicked()
 {
-    resetButtons();
-    QString text = ui->Choice_B->text();
-    if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_B->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_B->setAutoFillBackground(true);
-       ui->Choice_B->setPalette(pal);
-       ui->Choice_B->update();
-       ui->Next->show();
-    }
-    else {
-        QPalette pal = ui->Choice_B->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_B->setAutoFillBackground(true);
-        ui->Choice_B->setPalette(pal);
-        ui->Choice_B->update();
+    if(!clicked){
+        resetButtons();
+        QString text = ui->Choice_B->text();
+        if (text.compare(currQuestion) == 0) {
+           QPalette pal = ui->Choice_B->palette();
+           pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
+           ui->Choice_B->setAutoFillBackground(true);
+           ui->Choice_B->setPalette(pal);
+           ui->Choice_B->update();
+           ui->Next->show();
+           ui->Correction->setText("Correct!");
+        }
+        else {
+            QPalette pal = ui->Choice_B->palette();
+            pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
+            ui->Choice_B->setAutoFillBackground(true);
+            ui->Choice_B->setPalette(pal);
+            ui->Choice_B->update();
+            ui->Correction->setText("Incorrect, Try again!");
+            ui->Retry->show();
+        }
+        clicked = true;
     }
 }
 
 
 void BenchmarkWindow::on_Choice_C_clicked()
 {
-    resetButtons();
-    QString text = ui->Choice_C->text();
-    if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_C->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_C->setAutoFillBackground(true);
-       ui->Choice_C->setPalette(pal);
-       ui->Choice_C->update();
-       ui->Next->show();
-    }
-    else {
-        QPalette pal = ui->Choice_C->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_C->setAutoFillBackground(true);
-        ui->Choice_C->setPalette(pal);
-        ui->Choice_C->update();
+    if(!clicked){
+        resetButtons();
+        QString text = ui->Choice_C->text();
+        if (text.compare(currQuestion) == 0) {
+           QPalette pal = ui->Choice_C->palette();
+           pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
+           ui->Choice_C->setAutoFillBackground(true);
+           ui->Choice_C->setPalette(pal);
+           ui->Choice_C->update();
+           ui->Next->show();
+           ui->Correction->setText("Correct!");
+        }
+        else {
+            QPalette pal = ui->Choice_C->palette();
+            pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
+            ui->Choice_C->setAutoFillBackground(true);
+            ui->Choice_C->setPalette(pal);
+            ui->Choice_C->update();
+            ui->Correction->setText("Incorrect, Try again!");
+            ui->Retry->show();
+        }
+        clicked =true;
     }
 }
 
 
 void BenchmarkWindow::on_Choice_D_clicked()
 {
+    if(!clicked){
+        resetButtons();
+        QString text = ui->Choice_D->text();
+        if (text.compare(currQuestion) == 0) {
+           QPalette pal = ui->Choice_D->palette();
+           pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
+           ui->Choice_D->setAutoFillBackground(true);
+           ui->Choice_D->setPalette(pal);
+           ui->Choice_D->update();
+           ui->Next->show();
+           ui->Correction->setText("Correct!");
+        }
+        else {
+            QPalette pal = ui->Choice_D->palette();
+            pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
+            ui->Choice_D->setAutoFillBackground(true);
+            ui->Choice_D->setPalette(pal);
+            ui->Choice_D->update();
+            ui->Correction->setText("Incorrect, Try again!");
+            ui->Retry->show();
+        }
+        clicked =true;
+    }
+}
+
+void BenchmarkWindow::on_Retry_clicked()
+{
     resetButtons();
-    QString text = ui->Choice_D->text();
-    if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_D->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_D->setAutoFillBackground(true);
-       ui->Choice_D->setPalette(pal);
-       ui->Choice_D->update();
-       ui->Next->show();
-    }
-    else {
-        QPalette pal = ui->Choice_D->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_D->setAutoFillBackground(true);
-        ui->Choice_D->setPalette(pal);
-        ui->Choice_D->update();
-    }
 }
