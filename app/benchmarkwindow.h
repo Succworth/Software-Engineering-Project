@@ -35,11 +35,13 @@ private:
     AnswerKey *a;
     QString currQuestion;
     QVector<QString> questionSet;
+    int correct;
     int questionNo;
     int lessonNumber;
     bool clicked = false;
     void open_mainmenu();
     void displayQuestion();
+    void endScreen();
     void resetButtons();
     QVector<QString> randomize(QVector<QString> &choices);
 };

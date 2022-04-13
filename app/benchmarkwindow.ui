@@ -137,6 +137,19 @@
          </item>
         </layout>
        </widget>
+       <widget class="QLabel" name="Score">
+        <property name="geometry">
+         <rect>
+          <x>200</x>
+          <y>50</y>
+          <width>321</width>
+          <height>171</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
       </widget>
      </item>
     </layout>
@@ -148,7 +161,7 @@
      <x>0</x>
      <y>0</y>
      <width>783</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>

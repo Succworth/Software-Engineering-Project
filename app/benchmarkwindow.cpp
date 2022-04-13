@@ -4,9 +4,9 @@
 
 /* TO DO
  * Make it so that users can only guess one time ： Complete
- * Randomize the questions
- * Only display a certain number of questions
- * Display user's score once they've gone through every question
+ * Randomize the questions : Complete
+ * Only display a certain number of questions : Done
+ * Display user's score once they've gone through every question : Done
  * Add alphabet
 */
 
@@ -18,10 +18,13 @@ BenchmarkWindow::BenchmarkWindow(QWidget *parent, int i) :
     lessonNumber = i;
     a = new AnswerKey(i);
     questionNo = 0;
+    correct = 0;
     questionSet = a->getAnswers();
     questionSet = randomize(questionSet);
+
     ui->Correction->setText("Select an answer");
     ui->Retry->hide();
+    ui->Score->hide();
     displayQuestion();
 
 
@@ -58,7 +61,9 @@ QVector<QString> BenchmarkWindow::randomize(QVector<QString> &choices) {
 //Displays gif + choices
 void BenchmarkWindow::displayQuestion() {
     ui->Next->hide();
-
+    if (questionNo == 10) {
+        endScreen();
+    }
     currQuestion = questionSet[questionNo];
     questionNo++;
 
@@ -134,6 +139,7 @@ void BenchmarkWindow::on_Choice_A_clicked()
            ui->Choice_A->update();
            ui->Next->show();
            ui->Correction->setText("Correct!");
+           correct++;
         }
         else {
             QPalette pal = ui->Choice_A->palette();
@@ -142,10 +148,11 @@ void BenchmarkWindow::on_Choice_A_clicked()
             ui->Choice_A->setPalette(pal);
             ui->Choice_A->update();
             ui->Correction->setText("Incorrect, Try again!");
-            ui->Retry->show();
+            //ui->Retry->show();
             }
         clicked = true;
     }
+    ui->Next->show();
 }
 
 
@@ -162,6 +169,7 @@ void BenchmarkWindow::on_Choice_B_clicked()
            ui->Choice_B->update();
            ui->Next->show();
            ui->Correction->setText("Correct!");
+           correct++;
         }
         else {
             QPalette pal = ui->Choice_B->palette();
@@ -170,10 +178,11 @@ void BenchmarkWindow::on_Choice_B_clicked()
             ui->Choice_B->setPalette(pal);
             ui->Choice_B->update();
             ui->Correction->setText("Incorrect, Try again!");
-            ui->Retry->show();
+            //ui->Retry->show();
         }
         clicked = true;
     }
+    ui->Next->show();
 }
 
 
@@ -190,6 +199,7 @@ void BenchmarkWindow::on_Choice_C_clicked()
            ui->Choice_C->update();
            ui->Next->show();
            ui->Correction->setText("Correct!");
+           correct++;
         }
         else {
             QPalette pal = ui->Choice_C->palette();
@@ -198,10 +208,11 @@ void BenchmarkWindow::on_Choice_C_clicked()
             ui->Choice_C->setPalette(pal);
             ui->Choice_C->update();
             ui->Correction->setText("Incorrect, Try again!");
-            ui->Retry->show();
+            //ui->Retry->show();
         }
         clicked =true;
     }
+    ui->Next->show();
 }
 
 
@@ -218,6 +229,7 @@ void BenchmarkWindow::on_Choice_D_clicked()
            ui->Choice_D->update();
            ui->Next->show();
            ui->Correction->setText("Correct!");
+           correct++;
         }
         else {
             QPalette pal = ui->Choice_D->palette();
@@ -226,13 +238,24 @@ void BenchmarkWindow::on_Choice_D_clicked()
             ui->Choice_D->setPalette(pal);
             ui->Choice_D->update();
             ui->Correction->setText("Incorrect, Try again!");
-            ui->Retry->show();
+            //ui->Retry->show();
         }
         clicked =true;
     }
+    ui->Next->show();
 }
 
 void BenchmarkWindow::on_Retry_clicked()
 {
     resetButtons();
+}
+
+void BenchmarkWindow::endScreen() {
+    ui->Choice_A->hide();
+    ui->Choice_B->hide();
+    ui->Choice_C->hide();
+    ui->Choice_D->hide();
+    ui->label->hide();
+    ui->Score->show();
+    ui->Score->setText(QString::number((double)correct/(questionNo)*100) + "%");
 }
