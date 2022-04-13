@@ -19,6 +19,7 @@ BenchmarkWindow::BenchmarkWindow(QWidget *parent, int i) :
     a = new AnswerKey(i);
     questionNo = 0;
     questionSet = a->getAnswers();
+    questionSet = randomize(questionSet);
     ui->Correction->setText("Select an answer");
     ui->Retry->hide();
     displayQuestion();
