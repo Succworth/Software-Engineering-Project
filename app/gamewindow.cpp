@@ -72,29 +72,18 @@ void GameWindow::displayQuestion() {
 
 //Reset button colors
 void GameWindow::resetButtons() {
-    QPalette pal = ui->Choice_A->palette();
-    pal.setColor(QPalette::Button, QColor(QColorConstants::White));
-    ui->Choice_A->setAutoFillBackground(true);
-    ui->Choice_A->setPalette(pal);
+    ui->Choice_A->setStyleSheet("* { border-color: #051a39 }");
     ui->Choice_A->update();
 
-    pal = ui->Choice_B->palette();
-    pal.setColor(QPalette::Button, QColor(QColorConstants::White));
-    ui->Choice_B->setAutoFillBackground(true);
-    ui->Choice_B->setPalette(pal);
+    ui->Choice_B->setStyleSheet("* { border-color: #051a39 }");
     ui->Choice_B->update();
 
-    pal = ui->Choice_C->palette();
-    pal.setColor(QPalette::Button, QColor(QColorConstants::White));
-    ui->Choice_C->setAutoFillBackground(true);
-    ui->Choice_C->setPalette(pal);
+    ui->Choice_C->setStyleSheet("* { border-color: #051a39 }");
     ui->Choice_C->update();
 
-    pal = ui->Choice_D->palette();
-    pal.setColor(QPalette::Button, QColor(QColorConstants::White));
-    ui->Choice_D->setAutoFillBackground(true);
-    ui->Choice_D->setPalette(pal);
+    ui->Choice_D->setStyleSheet("* { border-color: #051a39 }");
     ui->Choice_D->update();
+
 }
 
 //Flow of questions
@@ -110,18 +99,12 @@ void GameWindow::on_Choice_A_clicked()
     resetButtons();
     QString text = ui->Choice_A->text();
     if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_A->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_A->setAutoFillBackground(true);
-       ui->Choice_A->setPalette(pal);
-       ui->Choice_A->update();
-       ui->Next->show();
+        ui->Choice_A->setStyleSheet("* { border-color: #00ff00 }");
+        ui->Choice_A->update();
+        ui->Next->show();
     }
     else {
-        QPalette pal = ui->Choice_A->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_A->setAutoFillBackground(true);
-        ui->Choice_A->setPalette(pal);
+        ui->Choice_A->setStyleSheet("* { border-color: #ff0000 }");
         ui->Choice_A->update();
     }
 }
@@ -132,18 +115,12 @@ void GameWindow::on_Choice_B_clicked()
     resetButtons();
     QString text = ui->Choice_B->text();
     if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_B->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_B->setAutoFillBackground(true);
-       ui->Choice_B->setPalette(pal);
-       ui->Choice_B->update();
-       ui->Next->show();
+        ui->Choice_B->setStyleSheet("* { border-color: #00ff00 }");
+        ui->Choice_B->update();
+        ui->Next->show();
     }
     else {
-        QPalette pal = ui->Choice_B->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_B->setAutoFillBackground(true);
-        ui->Choice_B->setPalette(pal);
+        ui->Choice_B->setStyleSheet("* { border-color: #ff0000 }");
         ui->Choice_B->update();
     }
 }
@@ -154,18 +131,12 @@ void GameWindow::on_Choice_C_clicked()
     resetButtons();
     QString text = ui->Choice_C->text();
     if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_C->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_C->setAutoFillBackground(true);
-       ui->Choice_C->setPalette(pal);
-       ui->Choice_C->update();
-       ui->Next->show();
+        ui->Choice_C->setStyleSheet("* { border-color: #00ff00 }");
+        ui->Choice_C->update();
+        ui->Next->show();
     }
     else {
-        QPalette pal = ui->Choice_C->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_C->setAutoFillBackground(true);
-        ui->Choice_C->setPalette(pal);
+        ui->Choice_C->setStyleSheet("* { border-color: #ff0000 }");
         ui->Choice_C->update();
     }
 }
@@ -176,18 +147,12 @@ void GameWindow::on_Choice_D_clicked()
     resetButtons();
     QString text = ui->Choice_D->text();
     if (text.compare(currQuestion) == 0) {
-       QPalette pal = ui->Choice_D->palette();
-       pal.setColor(QPalette::Button, QColor(QColorConstants::Green));
-       ui->Choice_D->setAutoFillBackground(true);
-       ui->Choice_D->setPalette(pal);
-       ui->Choice_D->update();
-       ui->Next->show();
+        ui->Choice_D->setStyleSheet("* { border-color: #00ff00 }");
+        ui->Choice_D->update();
+        ui->Next->show();
     }
     else {
-        QPalette pal = ui->Choice_D->palette();
-        pal.setColor(QPalette::Button, QColor(QColorConstants::Red));
-        ui->Choice_D->setAutoFillBackground(true);
-        ui->Choice_D->setPalette(pal);
+        ui->Choice_D->setStyleSheet("* { border-color: #ff0000 }");
         ui->Choice_D->update();
     }
 }
