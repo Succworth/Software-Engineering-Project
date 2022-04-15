@@ -34,16 +34,17 @@ void MainMenu::setUserText(QString name, QString id){
 
 void MainMenu::init_menu(){
     unsigned int numLessons = 30;
-    unsigned int numBenchmarks = 30;
+    //unsigned int numBenchmarks = 30;
 
     //set up Lessons
     QVBoxLayout* lesson_layout = new QVBoxLayout(ui->frame_2);
     QPushButton **lessonArray = new QPushButton*[numLessons];
-    for(unsigned int i = 1; i < numLessons+1; i++){
+    for(unsigned int i = 0; i < numLessons+1; i++){
 
         QHBoxLayout* row = new QHBoxLayout();
 
         QLabel* lessonName = new QLabel(QStringLiteral("Lesson %1").arg(i));
+        if(i == 0){ lessonName = new QLabel("Alphabet"); }
         QPushButton* goToLesson = new QPushButton("Start Lesson");
 
         row->addWidget(lessonName);
@@ -51,8 +52,8 @@ void MainMenu::init_menu(){
 
         lesson_layout->addLayout(row);
 
-        lessonArray[i-1] = goToLesson;
-        QObject::connect(lessonArray[i-1], &QPushButton::clicked, this, [=] {
+        lessonArray[i] = goToLesson;
+        QObject::connect(lessonArray[i], &QPushButton::clicked, this, [=] {
                             open_lesson(i);
                          });
 
@@ -61,11 +62,12 @@ void MainMenu::init_menu(){
     QVBoxLayout* benchmark_layout = new QVBoxLayout(ui->frame_3);
 
     QPushButton **benchmarkArray = new QPushButton*[numLessons];
-    for(unsigned int i = 1; i < numLessons+1; i++){
+    for(unsigned int i = 0; i < numLessons+1; i++){
 
         QHBoxLayout* row = new QHBoxLayout();
 
         QLabel* benchmarkName = new QLabel(QStringLiteral("Benchmark %1").arg(i));
+        if(i == 0){ benchmarkName = new QLabel("Alphabet Benchmark"); }
         QPushButton* goToBenchmark = new QPushButton("Start Benchmark");
 
         row->addWidget(benchmarkName);
@@ -73,8 +75,8 @@ void MainMenu::init_menu(){
 
         benchmark_layout->addLayout(row);
 
-        benchmarkArray[i-1] = goToBenchmark;
-        QObject::connect(benchmarkArray[i-1], &QPushButton::clicked, this, [=] {
+        benchmarkArray[i] = goToBenchmark;
+        QObject::connect(benchmarkArray[i], &QPushButton::clicked, this, [=] {
                             open_benchmark(i);
                          });
     }

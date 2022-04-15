@@ -2,11 +2,12 @@
 
 AnswerKey::AnswerKey(int i) {
     QDir exeDir(QCoreApplication::applicationDirPath());
-    qDebug() <<  exeDir.path()+"/Assets.qrc";
-    QResource::registerResource(exeDir.path()+"/Assets.qrc");
+    //qDebug() <<  exeDir.path()+"/Assets.qrc";
+    //QResource::registerResource(exeDir.path()+"/Assets.qrc");
     numWords = 0;
     //example of how directories look now: ":/Assets/Common Words and Phrases 1/again.mp4"
     QString path = ":/Assets/Common Words and Phrases "+QString::number(i)+"/";
+    if(i == 0) { path = ":/Assets/Alphabet/"; }
     QDirIterator it(path, QDirIterator::Subdirectories);
     while (it.hasNext()) {
         QFileInfo fi(it.next());

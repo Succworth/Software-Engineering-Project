@@ -1,5 +1,31 @@
 <RCC>
     <qresource prefix="/">
+        <file>Assets/Alphabet/A.gif</file>
+        <file>Assets/Alphabet/B.gif</file>
+        <file>Assets/Alphabet/C.gif</file>
+        <file>Assets/Alphabet/D.gif</file>
+        <file>Assets/Alphabet/E.gif</file>
+        <file>Assets/Alphabet/F.gif</file>
+        <file>Assets/Alphabet/G.gif</file>
+        <file>Assets/Alphabet/H.gif</file>
+        <file>Assets/Alphabet/I.gif</file>
+        <file>Assets/Alphabet/J.gif</file>
+        <file>Assets/Alphabet/K.gif</file>
+        <file>Assets/Alphabet/L.gif</file>
+        <file>Assets/Alphabet/M.gif</file>
+        <file>Assets/Alphabet/N.gif</file>
+        <file>Assets/Alphabet/O.gif</file>
+        <file>Assets/Alphabet/P.gif</file>
+        <file>Assets/Alphabet/Q.gif</file>
+        <file>Assets/Alphabet/R.gif</file>
+        <file>Assets/Alphabet/S.gif</file>
+        <file>Assets/Alphabet/T.gif</file>
+        <file>Assets/Alphabet/U.gif</file>
+        <file>Assets/Alphabet/V.gif</file>
+        <file>Assets/Alphabet/W.gif</file>
+        <file>Assets/Alphabet/X.gif</file>
+        <file>Assets/Alphabet/Y.gif</file>
+        <file>Assets/Alphabet/Z.gif</file>
         <file>Assets/Common Words and Phrases 1/again.gif</file>
         <file>Assets/Common Words and Phrases 1/deaf.gif</file>
         <file>Assets/Common Words and Phrases 1/dont_understand.gif</file>

@@ -62,6 +62,7 @@ void GameWindow::displayQuestion() {
     qDebug() <<  exeDir.path()+"/Assets.qrc";
     QResource::registerResource(exeDir.path()+"/Assets.qrc");
     QString path = ":/Assets/Common Words and Phrases " + QString::number(lessonNumber) + "/";
+    if(lessonNumber == 0) { path = ":/Assets/Alphabet/"; }
     QMovie *movie = new QMovie(path + currQuestion + ".gif");
     ui->label->setMovie(movie);
     ui->label->setScaledContents(true);
