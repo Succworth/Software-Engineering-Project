@@ -7,10 +7,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    QDir exeDir(QCoreApplication::applicationDirPath());
-    QResource::registerResource(exeDir.path()+"/Assets.qrc");
     QString path = ":/Assets/Darkeum.qss";
-
     qDebug() <<  path;
     QFile styleSheetFile(path);
     styleSheetFile.open(QFile::ReadOnly);
