@@ -8,8 +8,11 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QDir exeDir(QCoreApplication::applicationDirPath());
-    qDebug() <<  exeDir.path() + "/Darkeum.qss";
-    QFile styleSheetFile(exeDir.path()+"/Darkeum.qss");
+    QResource::registerResource(exeDir.path()+"/Assets.qrc");
+    QString path = ":/Assets/Darkeum.qss";
+
+    qDebug() <<  path;
+    QFile styleSheetFile(path);
     styleSheetFile.open(QFile::ReadOnly);
     QString styleSheet = QLatin1String(styleSheetFile.readAll());
     a.setStyleSheet(styleSheet);

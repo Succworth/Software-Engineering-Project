@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
-        <file>Assets/Alphabet/A.gif</file>
+        <file>Assets/Darkeum.qss</file>
+		<file>Assets/Alphabet/A.gif</file>
         <file>Assets/Alphabet/B.gif</file>
         <file>Assets/Alphabet/C.gif</file>
         <file>Assets/Alphabet/D.gif</file>
