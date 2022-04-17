@@ -16,6 +16,7 @@ SOURCES += \
     ../app/answerkey.cpp \
     ../app/benchmarkwindow.cpp \
     ../app/gamewindow.cpp \
+    ../app/user.cpp \
 
 HEADERS += \
     ../app/crackingasl.h \
@@ -23,6 +24,7 @@ HEADERS += \
     ../app/answerkey.h \
     ../app/benchmarkwindow.h \
     ../app/gamewindow.h \
+    ../app/user.h \
 
 FORMS += \
      ../app/crackingasl.ui \

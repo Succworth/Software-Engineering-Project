@@ -75,7 +75,7 @@ void login::test_login()
     QTest::keyClicks(casl.ui->lineEdit_2, "12345678");
     QCOMPARE(casl.ui->lineEdit_2->text(), QString("12345678"));
     QTest::mouseClick(casl.ui->pushButton, Qt::LeftButton);
-    QCOMPARE(casl.mainMenu->ui->label_2->text(), "User: 12345678, aye");
+    QCOMPARE(casl.mainMenu->ui->label_2->text(), "User: aye, 12345678");
 }
 
 QTEST_MAIN(login)
