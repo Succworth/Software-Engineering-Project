@@ -42,6 +42,7 @@ private:
     void displayQuestion();
     void resetButtons();
     QVector<QString> randomize(QVector<QString> &choices);
+    friend class login;
 };
 
 #endif // GAMEWINDOW_H

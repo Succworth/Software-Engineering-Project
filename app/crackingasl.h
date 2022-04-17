@@ -33,5 +33,6 @@ private:
     User *user;
     void login();
     void createAccount();
+    friend class login;
 };
 #endif // CRACKINGASL_H
