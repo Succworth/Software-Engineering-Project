@@ -32,12 +32,14 @@ private slots:
 
     void on_Choice_D_clicked();
 
+    void on_Retry_clicked();
 private:
     Ui::GameWindow *ui;
     AnswerKey *a;
     QString currQuestion;
     User *user;
     int lessonNumber;
+    bool clicked = false;
     void open_mainmenu();
     void displayQuestion();
     void resetButtons();
