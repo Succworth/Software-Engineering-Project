@@ -26,6 +26,7 @@ private:
     GameWindow* gameWindow;
     BenchmarkWindow* benchmarkWindow;
     User *user;
+    friend class login;
 };
 
 #endif // MAINMENU_H
