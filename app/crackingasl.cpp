@@ -158,9 +158,19 @@ void CrackingASL::createAccount()
         db.open();
         QSqlQuery query1("INSERT INTO CRACKINGASL(STUDENT_ID,STUDENT_NAME) "
                           "VALUES ('"+id+"', '"+name+"') ");
+       // query1.prepare("INSERT INTO CRACKINGASL(STUDENT_ID,STUDENT_NAME) "
+       //                "VALUES (?,?) ");
+       //               // "VALUES ('"+id+"', '"+name+"') ");
+       // query1.addBindValue(id);
+       // query1.addBindValue(name);
         query1.exec();
+       // if(query1.exec()){
         ui->label_3->setText("Account Created Successfully");
-
+       //     }
+       //     else{
+       //     ui->label_3->setText("failed");
+       //     db.close();
+       // }
         }
     }
     //ui->label_3->setText("Creating button works");
