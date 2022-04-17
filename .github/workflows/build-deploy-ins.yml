@@ -65,7 +65,7 @@ jobs:
         shell: cmd
         run: |
           cd ${{ runner.workspace }}\Qt\5.15.2\mingw81_64
-          windeployqt.exe ${{ github.workspace }}\app\release\CrackingASL.exe
+          windeployqt.exe ${{ github.workspace }}\app\release\app.exe
           
       - name: Cache InnoSetup
         id: cache-innosetup

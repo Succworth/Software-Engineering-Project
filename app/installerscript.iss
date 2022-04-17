@@ -29,7 +29,7 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "app\release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\app.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "app\release\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "app\release\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "app\release\libgcc_s_seh-1.dll"; DestDir: "{app}"; Flags: ignoreversion
