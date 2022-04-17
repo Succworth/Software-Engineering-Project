@@ -65,24 +65,24 @@ jobs:
         shell: cmd
         run: |
           cd ${{ runner.workspace }}\Qt\5.15.2\mingw81_64
-          windeployqt.exe ${{ github.workspace }}\release\CrackingASL.exe
+          windeployqt.exe ${{ github.workspace }}\app\release\CrackingASL.exe
           
       - name: Cache InnoSetup
         id: cache-innosetup
         uses: actions/cache@v1
         with:
-          path: release
+          path: app/release
           key: ${{ runner.os }}-innosetup
 
       - name: Download and install InnoSetup
         if: steps.cache-innosetup.outputs.cache-hit != 'true'
         run: |
           curl -L -o installer.exe http://files.jrsoftware.org/is/6/innosetup-6.2.0.exe
-          ./installer.exe /verysilent /allusers /dir=release         
+          ./installer.exe /verysilent /allusers /dir=app\release         
         
       - name: Create Installer 
         run: |
-          cd ./release
+          cd ./app/release
           ls
           ISCC.exe /O"${{ github.workspace }}\Cracking ASL Installer" "${{ github.workspace }}\installerscript.iss"
         
