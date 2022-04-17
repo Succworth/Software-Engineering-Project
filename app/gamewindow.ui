@@ -56,22 +56,8 @@
           <enum>QFrame::Raised</enum>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QPushButton" name="Choice_A">
-            <property name="text">
-             <string>PushButton</string>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QPushButton" name="Choice_C">
-            <property name="text">
-             <string>PushButton</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QPushButton" name="Choice_D">
             <property name="text">
              <string>PushButton</string>
             </property>
@@ -84,7 +70,21 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="0" colspan="2">
+          <item row="1" column="1">
+           <widget class="QPushButton" name="Choice_D">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QPushButton" name="Choice_A">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
            <widget class="QFrame" name="frame_2">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
@@ -101,13 +101,6 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="Retry">
-               <property name="text">
-                <string>Try Again!</string>
-               </property>
-              </widget>
-             </item>
-             <item>
               <widget class="QPushButton" name="Next">
                <property name="text">
                 <string>Next</string>
@@ -115,13 +108,6 @@
               </widget>
              </item>
             </layout>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QLabel" name="Correction">
-            <property name="text">
-             <string/>
-            </property>
            </widget>
           </item>
          </layout>
@@ -138,7 +124,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
