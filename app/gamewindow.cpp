@@ -4,13 +4,13 @@
 
 // Add alphabet
 
-GameWindow::GameWindow(QWidget *parent, int i) :
+GameWindow::GameWindow(QWidget *parent, int i, User *user) :
     QMainWindow(parent),
     ui(new Ui::GameWindow)
 {
     ui->setupUi(this);
     lessonNumber = i;
-
+    this->user = user;
     a = new AnswerKey(i);
     displayQuestion();
 
@@ -26,7 +26,7 @@ GameWindow::~GameWindow()
 void GameWindow::open_mainmenu(){
     hide();
     //do saving and destruction
-    MainMenu* mainmenu = new MainMenu(this);
+    MainMenu* mainmenu = new MainMenu(this, user);
     mainmenu->show();
 }
 

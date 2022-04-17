@@ -77,11 +77,12 @@ void CrackingASL::login(){
         if(query.first()){
             hide();
             qDebug() << "Valid input 1";
-            mainMenu = new MainMenu(this);
+            user = new User(id, name);
+            mainMenu = new MainMenu(this, user);
             qDebug() << "Valid input 2";
             mainMenu->show();
             qDebug() << "Valid input 3";
-            mainMenu->setUserText(query.value(0).toString(), query.value(1).toString());
+            mainMenu->setUserText(user->name, user->id);
             qDebug() << "Valid input 4";
             //ui->label_3->setText(query.value(1).toString());
         }else{

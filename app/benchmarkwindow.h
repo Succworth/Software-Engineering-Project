@@ -5,6 +5,7 @@
 #include <QMovie>
 #include <random>
 #include "answerkey.h"
+#include "user.h"
 
 namespace Ui {
 class BenchmarkWindow;
@@ -15,7 +16,7 @@ class BenchmarkWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit BenchmarkWindow(QWidget *parent = nullptr, int i = 1);
+    explicit BenchmarkWindow(QWidget *parent = nullptr, int i = 1, User *user = nullptr);
     ~BenchmarkWindow();
 private slots:
     void on_Next_clicked();
@@ -33,6 +34,7 @@ private slots:
 private:
     Ui::BenchmarkWindow *ui;
     AnswerKey *a;
+    User *user;
     QString currQuestion;
     QVector<QString> questionSet;
     int correct;

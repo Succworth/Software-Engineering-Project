@@ -5,6 +5,7 @@
 #include <QMovie>
 #include <random>
 #include "answerkey.h"
+#include "user.h"
 
 class MainMenu;
 
@@ -17,7 +18,7 @@ class GameWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit GameWindow(QWidget *parent = nullptr, int i = 1);
+    explicit GameWindow(QWidget *parent = nullptr, int i = 1, User *user = nullptr);
     ~GameWindow();
 
 private slots:
@@ -35,6 +36,7 @@ private:
     Ui::GameWindow *ui;
     AnswerKey *a;
     QString currQuestion;
+    User *user;
     int lessonNumber;
     void open_mainmenu();
     void displayQuestion();

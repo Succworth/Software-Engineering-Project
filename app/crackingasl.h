@@ -7,6 +7,7 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 #include "mainmenu.h"
+#include "user.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class CrackingASL; }
@@ -29,6 +30,7 @@ private:
     Ui::CrackingASL *ui;
     QSqlDatabase db;
     MainMenu *mainMenu;
+    User *user;
     void login();
     void createAccount();
 };

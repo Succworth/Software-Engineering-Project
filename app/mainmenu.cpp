@@ -4,14 +4,19 @@
 #include "answerkey.h"
 #include "gamewindow.h"
 
-MainMenu::MainMenu(QWidget *parent) :
+MainMenu::MainMenu(QWidget *parent, User *user) :
     QMainWindow(parent),
     ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
-
+    this->user = user;
     init_menu();
-
+    if (user == nullptr) {
+        qDebug() << "Bad user\n";
+    }
+    else {
+        setUserText(user->name, user->id);
+    }
     //temp code below
     /*
     AnswerKey a = AnswerKey(2);
@@ -85,12 +90,12 @@ void MainMenu::init_menu(){
 
 void MainMenu::open_lesson(int i){
     hide();
-    gameWindow = new GameWindow(this, i);
+    gameWindow = new GameWindow(this, i, user);
     gameWindow->show();
 }
 
 void MainMenu::open_benchmark(int i){
     hide();
-    benchmarkWindow = new BenchmarkWindow(this, i);
+    benchmarkWindow = new BenchmarkWindow(this, i, user);
     benchmarkWindow->show();
 }

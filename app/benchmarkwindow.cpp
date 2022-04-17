@@ -10,13 +10,14 @@
  * Add alphabet
 */
 
-BenchmarkWindow::BenchmarkWindow(QWidget *parent, int i) :
+BenchmarkWindow::BenchmarkWindow(QWidget *parent, int i, User *user) :
     QMainWindow(parent),
     ui(new Ui::BenchmarkWindow)
 {
     ui->setupUi(this);
     lessonNumber = i;
     a = new AnswerKey(i);
+    this->user = user;
     questionNo = 0;
     correct = 0;
     questionSet = a->getAnswers();
@@ -39,7 +40,7 @@ BenchmarkWindow::~BenchmarkWindow()
 void BenchmarkWindow::open_mainmenu(){
     hide();
     //do saving and destruction
-    MainMenu* mainmenu = new MainMenu(this);
+    MainMenu* mainmenu = new MainMenu(this, user);
     mainmenu->show();
 }
 
@@ -221,6 +222,8 @@ void BenchmarkWindow::endScreen() {
     ui->Choice_C->hide();
     ui->Choice_D->hide();
     ui->label->hide();
+    ui->Correction->hide();
+
     ui->Score->show();
     ui->Score->setText(QString::number((double)correct/(questionNo)*100) + "%");
 }
