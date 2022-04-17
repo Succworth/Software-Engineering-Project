@@ -16,7 +16,7 @@ DefaultDirName={autopf}\{#MyAppName}
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
-OutputDir=release\Cracking ASL Installer
+OutputDir=app\release\Cracking ASL Installer
 OutputBaseFilename=CrackingASL-Setup
 Compression=lzma
 SolidCompression=yes
@@ -29,27 +29,26 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\libgcc_s_seh-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\opengl32sw.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\Qt5Sql.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\Qt5Svg.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\Qt5Widgets.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\Assets.qrc"; DestDir: "{app}"; Flags: ignoreversion
-Source: "release\db\*"; DestDir: "{app}\db"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "release\iconengines\*"; DestDir: "{app}\iconengines"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "release\imageformats\*"; DestDir: "{app}\imageformats"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "release\platforms\*"; DestDir: "{app}\platforms"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "release\sqldrivers\*"; DestDir: "{app}\sqldrivers"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "release\styles\*"; DestDir: "{app}\styles"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "release\translations\*"; DestDir: "{app}\translations"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app\release\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\D3Dcompiler_47.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\libEGL.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\libgcc_s_seh-1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\libGLESv2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\libstdc++-6.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\libwinpthread-1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\opengl32sw.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\Qt5Core.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\Qt5Gui.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\Qt5Sql.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\Qt5Svg.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\Qt5Widgets.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "app\release\db\*"; DestDir: "{app}\db"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app\release\iconengines\*"; DestDir: "{app}\iconengines"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app\release\imageformats\*"; DestDir: "{app}\imageformats"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app\release\platforms\*"; DestDir: "{app}\platforms"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app\release\sqldrivers\*"; DestDir: "{app}\sqldrivers"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app\release\styles\*"; DestDir: "{app}\styles"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "app\release\translations\*"; DestDir: "{app}\translations"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
