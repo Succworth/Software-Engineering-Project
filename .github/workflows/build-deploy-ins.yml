@@ -84,7 +84,7 @@ jobs:
         run: |
           cd ./app/release
           ls
-          ISCC.exe /O"${{ github.workspace }}\Cracking ASL Installer" "${{ github.workspace }}\installerscript.iss"
+          ISCC.exe /O"${{ github.workspace }}\Cracking ASL Installer" "${{ github.workspace }}\app\installerscript.iss"
         
       - uses: actions/upload-artifact@v1
         with:
